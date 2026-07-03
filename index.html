@@ -524,7 +524,7 @@ function submitForm() {
   if (!source) { document.getElementById('errSource').style.display = 'block'; ok = false; }
   if (!ok) return;
 
-  var issueUrl = 'https://github.com/ravidvr/german-worker-owned-businesses/issues/new' +
+  var issueUrl = 'https://github.com/ravidvr/german-worker-coops/issues/new' +
     '?template=add-entry.yml&labels=new-entry' +
     '&title=' + encodeURIComponent((lang === 'de' ? 'Neuer Eintrag: ' : 'New entry: ') + name) +
     '&name=' + encodeURIComponent(name) +

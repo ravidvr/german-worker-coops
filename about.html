@@ -26,7 +26,20 @@ a:hover { text-decoration: underline; }
     <h1>👋 Hey, I'm Ravi</h1>
     <div class="subtitle">Data tinkerer, AI enthusiast, coop curious</div>
     
-    <p>I built this map because I was curious: where are all the worker-owned businesses in Germany? Turns out, nobody had put them on a map before. So I scraped what was publicly available, geocoded every entry, and threw it on a Leaflet map with a submission form.</p>
+    <p>I built this map because I was curious: where are all the worker-owned businesses in Germany? Turns out, nobody had put them on a map before.</p>
+
+    <h2 style="font-size:16px;margin:20px 0 10px;color:#e74c3c;">How the data was collected</h2>
+    
+    <p><strong>Three public sources → merged → deduplicated → geocoded → published.</strong></p>
+    
+    <p>I scraped <strong>worker-coops.de</strong> (44 entries, curated by worker-coop advocates), <strong>Wikipedia's list of worker cooperatives</strong> (German entries), and the <strong>GitHub tech-coops directory</strong>. All three were merged, deduplicated by name, and classified by governance model (worker majority, governance-based, statute-based, or in founding).</p>
+
+    <p>Each business was then <strong>geocoded to its street address</strong> using OpenStreetMap's Nominatim API. For addresses that weren't obvious, I visited their websites directly and extracted the address from their Impressum pages.</p>
+
+    <p>The result: <strong>62 verified worker-owned businesses</strong> across 15 sectors — from IT co-ops in Berlin to carpentry workshops in Bavaria, food co-ops in Leipzig to roofing co-ops in Bremen.</p>
+
+    <p style="font-size:13px;color:#999;border-left:3px solid #e74c3c;padding-left:14px;">
+    Every entry is attributed to its source. The database is <strong>CC BY-SA 4.0</strong>. New entries can be submitted via the map's "Add a business" form — they're reviewed and added within hours.</p>
 
     <p>I like playing with AI, databases, maps, and anything that combines all three. This is one of those projects.</p>
 

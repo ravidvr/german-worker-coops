@@ -4,7 +4,7 @@
 
 Click this button to submit a new entry:
 
-👉 **[➕ Add a worker-owned business](https://github.com/ravidvr/german-worker-owned-businesses/issues/new?template=add-entry.yml)**
+👉 **[➕ Add a worker-owned business](https://github.com/ravidvr/german-worker-coops/issues/new?template=add-entry.yml)**
 
 Fill in the form — that's it. A maintainer will review and add it to the database.
 
