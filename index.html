@@ -201,7 +201,7 @@ body.dark .action-btn { color: #8b949e; border-color: #30363d; }
   <span class="attribution">
     <a href="https://github.com/ravidvr/german-worker-coops"><span id="attribSource">Source Data</span></a> ·
     <a href="/about.html"><span id="attribAbout">About</span></a> ·
-    <a href="#" onclick="openFeedback();return false;"><span id="attribFeedback">Feedback</span></a> ·
+    <a href="#" onclick="openFeedbackForm();return false;"><span id="attribFeedback">Feedback</span></a> ·
     © <a href="https://openstreetmap.org/copyright">OSM Contributors</a> ·
     <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
   </span>
@@ -270,6 +270,39 @@ body.dark .action-btn { color: #8b949e; border-color: #30363d; }
   </div>
 </div>
 
+<!-- Feedback modal -->
+<div id="fbOverlay" onclick="if(event.target===this)closeFeedback()">
+  <div id="modal">
+    <div id="fbFormView">
+      <h2 id="fbTitle">💬 Feedback</h2>
+      <p class="sub" id="fbSub">Help me make this map better. What works, what doesn't, what's missing?</p>
+      <div class="field">
+        <label><span id="fbNameLabel">Your name</span></label>
+        <input id="fbName" placeholder="">
+      </div>
+      <div class="field">
+        <label><span id="fbMsgLabel">Your message</span> <span class="req">*</span></label>
+        <textarea id="fbMsg" placeholder="" style="min-height:120px" required></textarea>
+        <div class="error" id="errFbMsg">Required</div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-secondary" onclick="closeFeedback()" id="fbCancel">Cancel</button>
+        <button class="btn-primary" onclick="submitFeedback()" id="fbSubmit">Send feedback →</button>
+      </div>
+      <p class="required-msg" id="fbRequired">* Required. Opens a GitHub Issue with your feedback.</p>
+    </div>
+    <div id="fbSuccessView" style="display:none">
+      <div class="success-msg">
+        <div class="icon">💬</div>
+        <h3 id="fbSuccTitle">Thanks!</h3>
+        <p id="fbSuccText">Your feedback has been opened as a GitHub Issue. I'll read it.</p>
+        <a id="fbIssueLink" href="#" target="_blank" class="btn-primary" style="display:inline-block;padding:11px 24px;text-decoration:none;border-radius:8px;"><span id="fbSuccBtn">View issue →</span></a>
+        <button class="btn-secondary" onclick="closeFeedback()" style="display:block;margin:10px auto 0;padding:8px 20px;border-radius:8px;border:1px solid #ddd;background:#f5f5f5;cursor:pointer;" id="fbSuccBack">Back to map</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 <script>
@@ -326,6 +359,14 @@ var i18n = {
     helpTitle: 'What is this?',
     helpLabel: 'What is this?',
     attribFeedback: 'Feedback',
+    fbTitle: '💬 Feedback',
+    fbSub: "Help me make this map better. What works, what doesn't, what's missing?",
+    fbNameLabel: 'Your name', fbMsgLabel: 'Your message',
+    fbCancel: 'Cancel', fbSubmit: 'Send feedback →',
+    fbRequired: '* Required. Opens a GitHub Issue with your feedback.',
+    fbSuccTitle: 'Thanks!',
+    fbSuccText: "Your feedback has been opened as a GitHub Issue. I'll read it.",
+    fbSuccBtn: 'View issue →', fbSuccBack: 'Back to map',
     nearMeLabel: 'Near me', exportLabel: 'CSV',
   },
   de: {
@@ -378,6 +419,14 @@ var i18n = {
     helpTitle: 'Was ist das?',
     helpLabel: 'Was ist das?',
     attribFeedback: 'Feedback',
+    fbTitle: '💬 Feedback',
+    fbSub: 'Hilf mir, die Karte zu verbessern. Was funktioniert, was nicht, was fehlt?',
+    fbNameLabel: 'Dein Name', fbMsgLabel: 'Deine Nachricht',
+    fbCancel: 'Abbrechen', fbSubmit: 'Feedback senden →',
+    fbRequired: '* Erforderlich. Öffnet ein GitHub Issue mit deinem Feedback.',
+    fbSuccTitle: 'Danke!',
+    fbSuccText: 'Dein Feedback wurde als GitHub Issue eröffnet. Ich lese es.',
+    fbSuccBtn: 'Issue ansehen →', fbSuccBack: 'Zurück zur Karte',
     nearMeLabel: 'In der Nähe', exportLabel: 'CSV',
   }
 };
@@ -457,13 +506,31 @@ function exportCSV() {
   URL.revokeObjectURL(a.href);
 }
 
-// ===== FEEDBACK =====
-function openFeedback() {
-  var body = '## Feedback\\n\\n**What works well?**\\n\\n**What could be improved?**\\n\\n**Missing something?**\\n\\n---\\n*Submitted via german-worker-coops map*';
+// ===== FEEDBACK FORM =====
+function openFeedbackForm() {
+  document.getElementById('fbFormView').style.display = 'block';
+  document.getElementById('fbSuccessView').style.display = 'none';
+  document.getElementById('fbOverlay').classList.add('open');
+}
+function closeFeedback() {
+  document.getElementById('fbOverlay').classList.remove('open');
+}
+function submitFeedback() {
+  var name = document.getElementById('fbName').value.trim() || 'Anonymous';
+  var msg = document.getElementById('fbMsg').value.trim();
+  document.getElementById('errFbMsg').style.display = 'none';
+  if (!msg) {
+    document.getElementById('errFbMsg').style.display = 'block';
+    return;
+  }
+  var body = '## Feedback from ' + name + '\\n\\n' + msg + '\\n\\n---\\n*Submitted via german-worker-coops map*';
   var issueUrl = 'https://github.com/ravidvr/german-worker-coops/issues/new' +
-    '?title=' + encodeURIComponent('Feedback: ') +
+    '?title=' + encodeURIComponent('Feedback: ' + name) +
     '&body=' + encodeURIComponent(body) +
     '&labels=feedback';
+  document.getElementById('fbFormView').style.display = 'none';
+  document.getElementById('fbSuccessView').style.display = 'block';
+  document.getElementById('fbIssueLink').href = issueUrl;
   window.open(issueUrl, '_blank');
 }
 
