@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <!-- Map grid lines -->
+  <g stroke="rgba(255,255,255,0.05)" stroke-width="1">
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="250" x2="1200" y2="250"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="350" x2="1200" y2="350"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="450" x2="1200" y2="450"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+
+  <!-- Pins (rough map shape of Germany) -->
+  <g>
+    <circle cx="350" cy="280" r="8" fill="#e74c3c" stroke="#fff" stroke-width="2"/>
+    <circle cx="380" cy="310" r="6" fill="#e74c3c" stroke="#fff" stroke-width="2"/>
+    <circle cx="320" cy="340" r="7" fill="#f39c12" stroke="#fff" stroke-width="2"/>
+    <circle cx="420" cy="260" r="6" fill="#2ecc71" stroke="#fff" stroke-width="2"/>
+    <circle cx="450" cy="300" r="5" fill="#e74c3c" stroke="#fff" stroke-width="2"/>
+    <circle cx="500" cy="250" r="7" fill="#e74c3c" stroke="#fff" stroke-width="2"/>
+    <circle cx="550" cy="280" r="5" fill="#9b59b6" stroke="#fff" stroke-width="2"/>
+    <circle cx="480" cy="320" r="6" fill="#f39c12" stroke="#fff" stroke-width="2"/>
+    <circle cx="600" cy="260" r="5" fill="#e74c3c" stroke="#fff" stroke-width="2"/>
+    <circle cx="350" cy="250" r="5" fill="#2ecc71" stroke="#fff" stroke-width="2"/>
+    <circle cx="680" cy="290" r="6" fill="#e74c3c" stroke="#fff" stroke-width="2"/>
+    <circle cx="720" cy="320" r="5" fill="#f39c12" stroke="#fff" stroke-width="2"/>
+    <circle cx="400" cy="350" r="5" fill="#e74c3c" stroke="#fff" stroke-width="2"/>
+    <circle cx="550" cy="330" r="5" fill="#e74c3c" stroke="#fff" stroke-width="2"/>
+    <circle cx="620" cy="300" r="5" fill="#e74c3c" stroke="#fff" stroke-width="2"/>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(60, 490)">
+    <circle cx="0" cy="0" r="5" fill="#e74c3c"/>
+    <text x="12" y="4" fill="rgba(255,255,255,0.7)" font-size="13" font-family="sans-serif">Worker Majority (51%+)</text>
+    <circle cx="180" cy="0" r="5" fill="#f39c12"/>
+    <text x="192" y="4" fill="rgba(255,255,255,0.7)" font-size="13" font-family="sans-serif">Governance-based</text>
+    <circle cx="350" cy="0" r="5" fill="#2ecc71"/>
+    <text x="362" y="4" fill="rgba(255,255,255,0.7)" font-size="13" font-family="sans-serif">Statute-based</text>
+    <circle cx="500" cy="0" r="5" fill="#9b59b6"/>
+    <text x="512" y="4" fill="rgba(255,255,255,0.7)" font-size="13" font-family="sans-serif">In Founding</text>
+  </g>
+
+  <!-- Title -->
+  <text x="60" y="110" fill="#fff" font-size="44" font-weight="bold" font-family="sans-serif">German Worker-Owned</text>
+  <text x="60" y="165" fill="#e74c3c" font-size="44" font-weight="bold" font-family="sans-serif">Business Map</text>
+  <text x="60" y="210" fill="rgba(255,255,255,0.5)" font-size="20" font-family="sans-serif">62 verified Produktivgenossenschaften · Interactive · Open Data</text>
+</svg>

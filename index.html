@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title id="pageTitle">German Worker-Owned Business Map</title>
+<meta property="og:title" content="German Worker-Owned Business Map">
+<meta property="og:description" content="Interactive map of 62 worker-owned businesses (Produktivgenossenschaften) in Germany — IT co-ops, carpentry workshops, food co-ops, and more. Find, filter, and contribute.">
+<meta property="og:image" content="https://ravidvr.github.io/german-worker-coops/og-image.png">
+<meta property="og:url" content="https://ravidvr.github.io/german-worker-coops/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="German Worker-Owned Business Map">
+<meta name="twitter:description" content="62 worker-owned businesses in Germany on an interactive map.">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
@@ -191,8 +199,9 @@ body.dark .action-btn { color: #8b949e; border-color: #30363d; }
   <span title="Governance model not yet classified — help us by submitting a correction"><span class="dot" style="background:#95a5a6"></span> <span id="legUnk">Unknown</span></span>
   <span title="Business is remote-first with no public office address — shown at city center"><span class="dot" style="background:#7f8c8d;opacity:0.5"></span> <span id="legRemote">Remote-only</span></span>
   <span class="attribution">
-    <a href="https://github.com/ravidvr/german-worker-owned-businesses"><span id="attribSource">Source Data</span></a> ·
+    <a href="https://github.com/ravidvr/german-worker-coops"><span id="attribSource">Source Data</span></a> ·
     <a href="/about.html"><span id="attribAbout">About</span></a> ·
+    <a href="#" onclick="openFeedback();return false;"><span id="attribFeedback">Feedback</span></a> ·
     © <a href="https://openstreetmap.org/copyright">OSM Contributors</a> ·
     <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
   </span>
@@ -316,6 +325,7 @@ var i18n = {
     welGotIt: 'Got it! →',
     helpTitle: 'What is this?',
     helpLabel: 'What is this?',
+    attribFeedback: 'Feedback',
     nearMeLabel: 'Near me', exportLabel: 'CSV',
   },
   de: {
@@ -367,6 +377,7 @@ var i18n = {
     welGotIt: 'Verstanden! →',
     helpTitle: 'Was ist das?',
     helpLabel: 'Was ist das?',
+    attribFeedback: 'Feedback',
     nearMeLabel: 'In der Nähe', exportLabel: 'CSV',
   }
 };
@@ -444,6 +455,16 @@ function exportCSV() {
   var blob = new Blob(['\uFEFF'+csv], {type: 'text/csv;charset=utf-8;'});
   var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'worker-coops-germany.csv'; a.click();
   URL.revokeObjectURL(a.href);
+}
+
+// ===== FEEDBACK =====
+function openFeedback() {
+  var body = '## Feedback\\n\\n**What works well?**\\n\\n**What could be improved?**\\n\\n**Missing something?**\\n\\n---\\n*Submitted via german-worker-coops map*';
+  var issueUrl = 'https://github.com/ravidvr/german-worker-coops/issues/new' +
+    '?title=' + encodeURIComponent('Feedback: ') +
+    '&body=' + encodeURIComponent(body) +
+    '&labels=feedback';
+  window.open(issueUrl, '_blank');
 }
 
 // ===== WELCOME OVERLAY =====
