@@ -1,0 +1,79 @@
+name: Add a worker-owned business
+description: Submit a new or missing worker-owned business in Germany
+title: "New entry: [Business Name]"
+labels: ["new-entry"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Business name
+      description: Full legal name (include eG, e.G., e.V., GmbH if applicable)
+      placeholder: "e.g. Example Co-op eG"
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: Website URL
+      description: Official website
+      placeholder: "https://example.coop"
+    validations:
+      required: true
+
+  - type: input
+    id: city
+    attributes:
+      label: City / Location
+      description: City or town where the business is based
+      placeholder: "e.g. Berlin, Hamburg, Leipzig"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: governance
+    attributes:
+      label: Governance type
+      description: How are workers involved in ownership or decision-making?
+      options:
+        - Worker majority (51%+ of employees are members)
+        - Governance-based (elevated decision power through governance)
+        - Statute-based (elevated decision power by statutes)
+        - Not sure
+    validations:
+      required: true
+
+  - type: input
+    id: sector
+    attributes:
+      label: Sector / Industry
+      description: What does the business do?
+      placeholder: "e.g. IT/Software, Woodworking, Food/Retail"
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Brief description of what the business does
+      placeholder: "e.g. Worker-owned software development cooperative..."
+    validations:
+      required: false
+
+  - type: input
+    id: source
+    attributes:
+      label: Source / Verification
+      description: How did you verify this business is worker-owned? (website, article, personal knowledge)
+      placeholder: "e.g. Their website states 'worker-owned cooperative' on their about page"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Confirmation
+      options:
+        - label: I confirm this business is genuinely worker-owned or democratically governed
+          required: true
