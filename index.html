@@ -123,11 +123,25 @@ body.dark .action-btn { color: #8b949e; border-color: #30363d; }
 /* Near me distance in popup */
 .meta.dist { color: #e74c3c; font-weight: 600; }
 @media (max-width: 600px) {
-  #header h1 { font-size: 15px; }
-  #filters { flex-direction: column; align-items: stretch; }
-  #filters select, #filters input { width: 100%; }
-  #legend { flex-direction: column; align-items: flex-start; gap: 4px; }
-  #modal { padding: 20px; }
+  #header{padding:8px 12px;gap:6px}
+  #header h1{font-size:14px}
+  #header .count{font-size:12px}
+  #header button,#header .action-btn{font-size:11px;padding:6px 10px;min-height:36px;white-space:nowrap}
+  #header div{gap:6px}
+  #filters{flex-direction:column;align-items:stretch;padding:8px 12px;gap:6px}
+  #filters select,#filters input{width:100%;min-height:40px;font-size:16px}
+  #map{height:55vh;min-height:300px}
+  #legend{flex-direction:column;align-items:flex-start;gap:4px;font-size:11px;padding:6px 10px}
+  #legend .attribution{font-size:10px;margin-left:0}
+  #modal{padding:16px;max-width:100%}
+  #modal h2{font-size:17px}
+  #modal input,#modal select,#modal textarea{font-size:16px;padding:10px 12px}
+  #modal .btn-primary,#modal .btn-secondary{font-size:14px;padding:12px;min-height:44px}
+  #welcomeBox{padding:20px;max-width:100%}
+  #welcomeBox h2{font-size:18px}
+  #welcomeBox .section p,#welcomeBox .section li{font-size:13px}
+  .leaflet-popup-content{font-size:13px;margin:8px 10px}
+  .leaflet-popup-content h3{font-size:14px}
 }
 </style>
 </head>
