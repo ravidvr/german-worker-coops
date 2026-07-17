@@ -2,6 +2,8 @@
 
 **Community-curated directory of worker-owned businesses (Produktivgenossenschaften) in Germany.**
 
+**Live directory:** https://ravidvr.github.io/german-worker-coops/
+
 A unified, deduplicated database of German worker cooperatives and democratic workplaces, aggregated from publicly available grassroots sources. Contains **60 verified entries** across diverse sectors.
 
 ## 🎯 What this is
